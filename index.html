@@ -4,6 +4,12 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
 <meta name="theme-color" content="#0F1113" />
+<link rel="manifest" href="./manifest.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CRUX">
+<link rel="apple-touch-icon" href="./apple-touch-icon-180.png">
 <title>CRUX — Strength for the send</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -933,6 +939,13 @@ function resetAll(){if(confirm('Wipe all your logs, PRs and bodyweight? This can
   document.getElementById('datechip').innerHTML=`<b>${now.toLocaleDateString('en-GB',{weekday:'short'})}</b>${now.toLocaleDateString('en-GB',{day:'numeric',month:'short'})}`;
   go('today');
 })();
+</script>
+<script>
+if('serviceWorker' in navigator){
+  window.addEventListener('load',function(){
+    navigator.serviceWorker.register('./sw.js').catch(function(){});
+  });
+}
 </script>
 </body>
 </html>
